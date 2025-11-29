@@ -78,7 +78,7 @@ function AlbumHeader({ isAlbumCompleted, isLinkValid }) {
 function AlbumMetadata({ albumName, albumMetadata }) {
   return (
     <>
-      <Avatar square src={albumMetadata?.albumPoster || MusicAlbum} size={{ narrow: 0, regular: 0, wide: 150 }} />
+      <Avatar square src={albumMetadata?.albumPoster || MusicAlbum} size={{ narrow: 100, regular: 125, wide: 150 }} />
       <Truncate maxWidth={"15ch"}>{albumName}</Truncate>
       {albumMetadata?.albumYear && <Text>{albumMetadata.albumYear}</Text>}
     </>
