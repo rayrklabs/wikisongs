@@ -102,17 +102,24 @@ export function Dashboard() {
   const [isCreateDialogActive, setCreateDialogActive] = useState(false);
   const [composerURL, setComposerURL] = useState(null);
   const { appLoadType, darkMode, setDarkMode } = useContext(DashboardContext);
+  const { searchAlbums } = useContext(DiscographyContext);
+
   return (
-    <>
+    <div>
       {isCreateDialogActive && (
         <ComposerLinkInputPage toggleCreateDialog={setCreateDialogActive} setComposerURL={setComposerURL} />
       )}
 
       {!appLoadType && <CreatePage createStatus={isCreateDialogActive} toggleCreate={setCreateDialogActive} />}
 
-      {appLoadType && <Discography key={`${Math.random()}`} url={composerURL} />}
+      {appLoadType && (
+        <Discography
+          key={appLoadType === "create" ? composerURL : searchAlbums?.length} // runtime error when key is dynamic - needs review.
+          url={composerURL}
+        />
+      )}
 
-      <>
+      <div>
         <Button
           variant="invisible"
           className="colorMode-button"
@@ -122,7 +129,7 @@ export function Dashboard() {
         >
           {darkMode ? <SunIcon size={16} /> : <MoonIcon size={16} />}
         </Button>
-      </>
-    </>
+      </div>
+    </div>
   );
 }
