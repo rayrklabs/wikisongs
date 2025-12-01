@@ -1,5 +1,5 @@
 {
-  "name": "rk_wikisongs",
+  "name": "wikisongs",
   "version": "1.0.0",
   "description": "",
   "main": "src/App.jsx",
@@ -10,7 +10,7 @@
     "predeploy": "pnpm run build",
     "deploy": "gh-pages -d dist"
   },
-  "homepage": "https://rayep.github.io/wikisongs",
+  "homepage": "https://rayrklabs.github.io/wikisongs",
   "keywords": [],
   "author": "",
   "license": "ISC",
