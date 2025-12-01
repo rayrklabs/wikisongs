@@ -64,7 +64,6 @@ Open in browser: `http://localhost:8080/index.html`
 
 ## ⚠ Known Limitations
 - **Wikipedia formatting inconsistency**: Composer pages vary in structure (tables, lists, rowspan). Current logic assumes album names are in italic or hyperlink tags. This may fail for some pages.
-- **Search issue**: Search doesn’t work on data created via the **Create** flow until you **Save** and then **Load** the data.
 
 ---
 
