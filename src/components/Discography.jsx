@@ -6,7 +6,7 @@ import { DashboardContext, WikiLinkButton } from "./Dashboard";
 
 export const DiscographyContext = createContext(null);
 
-function Composer({ name, avatar, yearsActive }) {
+function Composer({ name, avatar, yearsActive, wikiLink }) {
   return (
     <Stack direction={"horizontal"} align={"center"} justify={"center"}>
       <Avatar square size={{ narrow: 50, regular: 100, wide: 100 }} src={avatar} />
@@ -15,7 +15,7 @@ function Composer({ name, avatar, yearsActive }) {
           {name}
         </Heading>
         <Text>{yearsActive}</Text>
-        <WikiLinkButton value={name} />
+        <WikiLinkButton value={wikiLink} />
       </Stack>
     </Stack>
   );
@@ -29,7 +29,9 @@ export function Discography({ url }) {
     useEffect(
       () =>
         $.get(url, (data) => {
-          setComposerMetadata(getComposerMetadata($(data)));
+          let composerMetadata = getComposerMetadata($(data))
+          composerMetadata.wikiLink = url.split('/').at(-2)
+          setComposerMetadata(composerMetadata);
           setAlbums(getComposerAlbums($(data)));
         }),
       []
@@ -45,6 +47,7 @@ export function Discography({ url }) {
         name={composerMetadata.composerName}
         avatar={composerMetadata.composerPic}
         yearsActive={composerMetadata.yearsActive}
+        wikiLink={composerMetadata.wikiLink}
       />
       <div
         style={{
